@@ -1,10 +1,20 @@
 
 const express = require('express');
+const ejs = require('ejs');
+
 const app = express();
 const PORT = 3000;
 
+//setting our view engine
+app.set('view engine', 'ejs');
+app.set('views', './views');
+
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    const data = {
+        title: "Hello World",
+        message: "Welcome to my website! This is the data for the object"
+    }
+    res.render('index', {data});
 });
 
 app.get('/users/:id', (req, res) => {
