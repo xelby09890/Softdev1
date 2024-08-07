@@ -1,4 +1,4 @@
-// //setting our view engine
+// //setting our view engine ==========================================================================
 // app.set('view engine', 'ejs');
 // app.set('views', './views');
 
@@ -15,7 +15,7 @@
 //     res.send(`User with ID ${userId}`);
 // })
 
-// //Aug 05, 2024
+// //Aug 05, 2024 =====================================================================
 // const express = require('express');
 // const ejs = require('ejs');
 
@@ -35,7 +35,7 @@
 // });
 
 
-////Lesson 3
+////Lesson 3 =================================================================================
 // //Query parameters
 // app.get('/', (req, res) => {
 //      const id = req.query.id;
@@ -55,26 +55,80 @@
 //      res.send(`Product id: ${product.id}. Product name: ${product.name}`);
 // });
 
+// //August 06, 2024 11:00 ================================================================
+// const express = require('express');
+// const app = express();
 
+// const PORT = 3000||8000;
+
+// app.use(express.static('public'));
+
+// //middleware
+// app.use((req, res, next) => {
+//      req.timestamp = Date.now();
+//      next();
+// });
+
+// //route controller
+// app.get('/', (req, res) => {
+//      // res.send('Hello there, Red Deer');
+//      res.send(`Request timestamp: ${req.timestamp}`);
+// });
+
+// app.listen(PORT, () => {
+//      console.log(`Server is running on http://localhost: ${PORT}`);
+// });
+
+// //August 07, 2024 09:51 =======================================================================
+// const express = require('express');
+// const app = express();
+
+// const PORT = 3000||8000;
+
+// app.use(express.static('public'));
+
+// //middleware
+// app.use((req, res, next) => {
+//     console.log(`Request received: ${req.method} ${req.url}`);
+//      next();
+// });
+
+// //route controller
+// app.get('/', (req, res, next) => {
+//      try{
+//           res.send("Everthing is awesome!").status(200);
+//           // throw new Error('Something went wrong');
+//      }catch(error){
+//           next(error);
+//      }
+// });
+
+// app.listen(PORT, () => {
+//      console.log(`Server is running on http://localhost: ${PORT}`);
+// });
+// app.use(express.json());
+
+
+//August 07, 2024 11:51 =======================================================================
 const express = require('express');
 const app = express();
+require('dotenv').config();
+const PORT = process.env.PORT || 8000;
 
-const PORT = 3000;
 
+//serving static files
 app.use(express.static('public'));
 
-//middleware
-app.use((req, res, next) => {
-     req.timestamp = Date.now();
-     next();
-});
+//setup our views
+app.set('view engine', 'ejs');
+app.set('views','./views');
 
-//route controller
-app.get('/', (req, res) => {
-     // res.send('Hello there, Red Deer');
-     res.send(`Request timestamp: ${req.timestamp}`);
+//router handler
+app.get('/', (req,res) => {
+     res.render('home');
 });
 
 app.listen(PORT, () => {
      console.log(`Server is running on http://localhost: ${PORT}`);
 });
+
