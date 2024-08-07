@@ -34,18 +34,47 @@
 //      console.log(`Server is running on http://localhost:$(PORT)`);
 // });
 
+
+////Lesson 3
+// //Query parameters
+// app.get('/', (req, res) => {
+//      const id = req.query.id;
+//      const username = req.query.username;
+//      //Assuming the user ID and username are required parameters.
+//      res.send(`User ID: ${id}, Username: ${username}`);
+// });
+// //Route parameters
+// app.get('/products/:id', (req, res) => {
+//      const productId = req.params.id;
+//      const products = [
+//           {"id": 1, "name": "ProductA"},
+//           {"id": 2, "name": "ProductB"},
+//           {"id": 3, "name": "ProductC"},
+//      ]
+//      const product = products.find(product => product.id == parseInt(productId));
+//      res.send(`Product id: ${product.id}. Product name: ${product.name}`);
+// });
+
+
 const express = require('express');
 const app = express();
 
 const PORT = 3000;
-//Query parameters
+
+app.use(express.static('public'));
+
+//middleware
+app.use((req, res, next) => {
+     req.timestamp = Date.now();
+     next();
+});
+
+//route controller
 app.get('/', (req, res) => {
-     const id = req.query.id;
-     const username = req.query.username;
-     //Assuming the user ID and username are required parameters.
-     res.send(`User ID: ${id}, Username: ${username}`);
+     // res.send('Hello there, Red Deer');
+     res.send(`Request timestamp: ${req.timestamp}`);
 });
 
 app.listen(PORT, () => {
-     console.log(`Server is running on http://localhost:$(PORT)`);
+     console.log(`Server is running on http://localhost: ${PORT}`);
 });

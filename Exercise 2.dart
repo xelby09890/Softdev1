@@ -16,44 +16,7 @@ o	Call the average function and print the result.
 o	Call the gradeSummary function.
 */
 
-/*void main() {
-  Map<String, double> studentGrades = {
-    'Bruno': 75,
-    'Avril': 72,
-    'Taylor': 78,
-    'Oprah': 85,
-    'Sam': 55
-  };
-  gradeSummary(studentGrades);
-}
-
-double gradeSummary(Map<String, double> studentGrades) {
-  double sum = 0;
-  int count = studentGrades.length;
-
-  for (var entry in studentGrades.entries) {
-    String name = entry.key;
-    double grade = entry.value;
-    sum += grade;
-    print("$name: $grade");
-  }
-
-  double average = sum / count;
-  print("The average grade is $average");
-
-  const double threshold = 75.0;
-  if (average >= threshold) {
-    print("The average grade is above the threshold.");
-  } else {
-    print("The average grade is below the threshold.");
-  }
-
-  return average;
-}
-*/
-
 void main() {
-  List<int> Int1 = [1, 2, 7, 5, 9, 6, 3];
   Map<String, double> Grade = {
     'Bruno': 75.0,
     'Avril': 72.0,
@@ -62,6 +25,14 @@ void main() {
     'Sam': 55.0
   };
   gradeSummary(Grade);
+
+  List<int> l1 = [10, 20, 30, 25, 15];
+  int sum1 = 0;
+
+  for (int j = 0; j < l1.length; j++) {
+    sum1 = sum1 + l1[j];
+  }
+  print(sum1 / l1.length);
 }
 
 void gradeSummary(Map<String, double> Grade) {
